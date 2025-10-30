@@ -17,7 +17,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    echo "Building Docker image..."
+                    echo "🏗️ Building Docker image..."
                     sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
                 }
             }
@@ -26,13 +26,13 @@ pipeline {
         stage('Run Container') {
             steps {
                 script {
-                    echo "Stopping and removing old container if it exists..."
-                    sh "docker rm -f ${CONTAINER_NAME} || true"
+                    echo "🧹 Cleaning up old container (if any)..."
+                    sh "docker rm -f ${CONTAINER_NAME} || true"   // Cleanup before running
 
-                    echo "Running new container..."
+                    echo "🚀 Running new container..."
                     sh "docker run -d --name ${CONTAINER_NAME} -p 5000:5000 ${IMAGE_NAME}:${IMAGE_TAG}"
 
-                    echo "Container started successfully!"
+                    echo "✅ Container started successfully!"
                 }
             }
         }
@@ -49,5 +49,6 @@ pipeline {
         }
     }
 }
+
 
 

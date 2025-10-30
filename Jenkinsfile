@@ -4,14 +4,16 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/riya/flask-cicd.git'
+                git branch: 'main',
+                    url: 'https://github.com/rhiya02/flask-cicd.git',
+                    credentialsId: 'github-token'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("riya/flask-cicd:latest")
+                    dockerImage = docker.build("rhiya02/flask-cicd:latest")
                 }
             }
         }
@@ -25,3 +27,4 @@ pipeline {
         }
     }
 }
+

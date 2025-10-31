@@ -14,6 +14,16 @@ pipeline {
             }
         }
 
+ stage('SonarQube Analysis') {
+    steps {
+        withSonarQubeEnv('MySonarQube') {
+            sh "sonar-scanner -Dsonar.projectKey=flask-cicd -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=${SONAR_AUTH_TOKEN}"
+        }
+    }
+}
+
+
+
         stage('Build Docker Image') {
             steps {
                 script {

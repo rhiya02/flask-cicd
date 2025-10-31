@@ -14,24 +14,23 @@ pipeline {
             }
         }
 
- stage('SonarQube Analysis') {
-    steps {
-        script {
-            def scannerHome = tool 'sonar-scanner'   // Use the tool name from Global Tool Configuration
-            withSonarQubeEnv('MySonarQube') {
-                sh '${scannerHome}/bin/sonar-scanner \
-                    -Dsonar.projectKey=flask-cicd \
-                    -Dsonar.sources=. \
-                    -sonar.exclusions=**/tests/**,**/static/**,**/templates/**
-                    -Dsonar.host.url=http://localhost:9000 \
-                    -sonar.login=sqa_366c835fe69179d78e7875cb258b201a4146fb04'
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    def scannerHome = tool 'sonar-scanner'    // Use the tool name from Global Tool Configuration
+                    withSonarQubeEnv('MySonarQube') {
+                        // FIX: Combined the arguments into a single line or properly escaped the newlines
+                        // and ensured all properties start with -D
+                        sh "${scannerHome}/bin/sonar-scanner " +
+                           "-Dsonar.projectKey=flask-cicd " +
+                           "-Dsonar.sources=. " +
+                           "-Dsonar.exclusions=**/tests/**,**/static/**,**/templates/** " +
+                           "-Dsonar.host.url=http://localhost:9000 " +
+                           "-Dsonar.login=sqa_366c835fe69179d78e7875cb258b201a4146fb04"
+                    }
+                }
             }
         }
-    }
-}
-
-
-
 
         stage('Build Docker Image') {
             steps {
@@ -46,7 +45,7 @@ pipeline {
             steps {
                 script {
                     echo "🧹 Cleaning up old container (if any)..."
-                    sh "docker rm -f ${CONTAINER_NAME} || true"   // Cleanup before running
+                    sh "docker rm -f ${CONTAINER_NAME} || true"    // Cleanup before running
 
                     echo "🚀 Running new container..."
                     sh "docker run -d --name ${CONTAINER_NAME} -p 5000:5000 ${IMAGE_NAME}:${IMAGE_TAG}"
@@ -68,6 +67,3 @@ pipeline {
         }
     }
 }
-
-
-

@@ -19,12 +19,12 @@ pipeline {
         script {
             def scannerHome = tool 'sonar-scanner'   // Use the tool name from Global Tool Configuration
             withSonarQubeEnv('MySonarQube') {
-                sh "${scannerHome}/bin/sonar-scanner \
+                sh '${scannerHome}/bin/sonar-scanner \
                     -Dsonar.projectKey=flask-cicd \
-                    -Dsonar.sources=src \
-                    -sonar.exclusions=**/tests/**,**/*.md,**/*.json,**/static/**,**/templates/**
+                    -Dsonar.sources=. \
+                    -sonar.exclusions=**/tests/**,**/static/**,**/templates/**
                     -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.login=${SONAR_AUTH_TOKEN}"
+                    -sonar.login=sqa_366c835fe69179d78e7875cb258b201a4146fb04'
             }
         }
     }

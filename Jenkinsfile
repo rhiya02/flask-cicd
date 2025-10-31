@@ -16,11 +16,19 @@ pipeline {
 
  stage('SonarQube Analysis') {
     steps {
-        withSonarQubeEnv('MySonarQube') {
-            sh "sonar-scanner -Dsonar.projectKey=flask-cicd -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=${SONAR_AUTH_TOKEN}"
+        script {
+            def scannerHome = tool 'sonar-scanner'   // Use the tool name from Global Tool Configuration
+            withSonarQubeEnv('MySonarQube') {
+                sh "${scannerHome}/bin/sonar-scanner \
+                    -Dsonar.projectKey=flask-cicd \
+                    -Dsonar.sources=. \
+                    -Dsonar.host.url=http://localhost:9000 \
+                    -Dsonar.login=${SONAR_AUTH_TOKEN}"
+            }
         }
     }
 }
+
 
 
 

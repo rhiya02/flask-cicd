@@ -54,4 +54,1030 @@ sonarqube            lts       b2698b16c2b2   8 weeks ago      604MB
 [?2004l[?2004h[?1049h[22;0;0t[1;33r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[31;61H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 6.2                                                  Jenkinsile                                                           [1;132H(B[m[32d(B[0;7m^G(B[m Help[32;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[32;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[32;113H(B[0;7mM-A(B[m Set Mark[33d(B[0;7m^X(B[m Exit[33;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[33;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[33;113H(B[0;7mM-6(B[m Copy[2d[?12l[?25h[?25l[31d[J[33d[?12l[?25h[33;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;riya@DESKTOP-OO2RPRN: ~/flask-cicd[01;32mriya@DESKTOP-OO2RPRN[00m:[01;34m~/flask-cicd[00m$ ls
 [?2004l Dockerfile   Jenkinsfile   app.py   requirements.txt  '{'
 [?2004h]0;riya@DESKTOP-OO2RPRN: ~/flask-cicd[01;32mriya@DESKTOP-OO2RPRN[00m:[01;34m~/flask-cicd[00m$ cat [K[K[K[Knano [7m Jenkinsfile[27m Jenkinsfile
-[?2004l[?2004h[?1049h[22;0;0t[1;33r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[31;60H(B[0;7m[ Reading... ](B[m[31;59H(B[0;7m[ Read 54 lines ](B[m[H(B[0;7m  GNU nano 6.2                                                 Jenkinsfile                                                           [1;132H(B[m[32d(B[0;7m^G(B[m Help[32;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[32;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[32;113H(B[0;7mM-A(B[m Set Mark[33d(B[0;7m^X(B[m Exit[33;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[33;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[33;113H(B[0;7mM-6(B[m Copy[2dpipeline {[3;5Hagent any[5;5Henvironment {[6;9HIMAGE_NAME = "rhiya02/flask-cicd"[7;9HIMAGE_TAG = "latest"[8;9HCONTAINER_NAME = "flask_app"[9;5H}[11dstages {[12;9Hstage('Checkout Code') {[13;13Hsteps {[14;17Hgit branch: 'main', url: '[94mhttps://github.com/rhiya02/flask-cicd.git'[15;13H[39m(B[m}[16;9H}[18dstage('Build Docker Image') {[19;13Hsteps {[20;17Hscript {[21;21Hecho "🏗️ Building Docker image..."[22;21Hsh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."[23;17H}[24;13H}[25;9H}[27dstage('Run Container') {[28;13Hsteps {[29;17Hscript {[30;21Hecho "🧹 Cleaning up old container (if any)..."[2d[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[3d[?25l[?12l[?25h[4d[?25l[?12l[?25h[5d[?25l[?12l[?25h[6d[?25l[?12l[?25h[7d[?25l[?12l[?25h[8d[?25l[?12l[?25h[9d[?25l[?12l[?25h[10d[?25l[?12l[?25h[11d[?25l[?12l[?25h[12d[?25l[?12l[?25h[13d[?25l[?12l[?25h[14d[?25l[?12l[?25h[15d[?25l[?12l[?25h[16d[?25l[?12l[?25h[17d[?25l[?12l[?25h[A[?25l[?12l[?25h [?25l[31d[K[?12l[?25h[16d  [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h}[?25l[1;76H(B[0;7m*[132G(B[m[17;30r[17;1HM[1;33r[17;1H[?12l[?25h[?25l7[17;30r8M[1;33r[18;1H[?12l[?25h[?25l[?12l
+[?2004l[?2004h[?1049h[22;0;0t[1;33r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[31;60H(B[0;7m[ Reading... ](B[m[31;59H(B[0;7m[ Read 54 lines ](B[m[H(B[0;7m  GNU nano 6.2                                                 Jenkinsfile                                                           [1;132H(B[m[32d(B[0;7m^G(B[m Help[32;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[32;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[32;113H(B[0;7mM-A(B[m Set Mark[33d(B[0;7m^X(B[m Exit[33;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[33;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[33;113H(B[0;7mM-6(B[m Copy[2dpipeline {[3;5Hagent any[5;5Henvironment {[6;9HIMAGE_NAME = "rhiya02/flask-cicd"[7;9HIMAGE_TAG = "latest"[8;9HCONTAINER_NAME = "flask_app"[9;5H}[11dstages {[12;9Hstage('Checkout Code') {[13;13Hsteps {[14;17Hgit branch: 'main', url: '[94mhttps://github.com/rhiya02/flask-cicd.git'[15;13H[39m(B[m}[16;9H}[18dstage('Build Docker Image') {[19;13Hsteps {[20;17Hscript {[21;21Hecho "🏗️ Building Docker image..."[22;21Hsh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."[23;17H}[24;13H}[25;9H}[27dstage('Run Container') {[28;13Hsteps {[29;17Hscript {[30;21Hecho "🧹 Cleaning up old container (if any)..."[2d[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[3d[?25l[?12l[?25h[4d[?25l[?12l[?25h[5d[?25l[?12l[?25h[6d[?25l[?12l[?25h[7d[?25l[?12l[?25h[8d[?25l[?12l[?25h[9d[?25l[?12l[?25h[10d[?25l[?12l[?25h[11d[?25l[?12l[?25h[12d[?25l[?12l[?25h[13d[?25l[?12l[?25h[14d[?25l[?12l[?25h[15d[?25l[?12l[?25h[16d[?25l[?12l[?25h[17d[?25l[?12l[?25h[A[?25l[?12l[?25h [?25l[31d[K[?12l[?25h[16d  [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h}[?25l[1;76H(B[0;7m*[132G(B[m[17;30r[17;1HM[1;33r[17;1H[?12l[?25h[?25l7[17;30r8M[1;33r[18;1H[?12l[?25h[?25l[?12l[?25h[19d[?25l[17;30r[17;1HM[1;33r[20;1H[?12l[?25h[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l Jenkinsfile[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[K [?25l[17;30r[17;1H[7T[1;33r[18;2Hstage('SonarQube Analysis') {[19;5Hsteps {[20;9HwithSonarQubeEnv('MySonarQube') {[21;13Hsh "sonar-scanner -Dsonar.projectKey=flask-cicd -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=$(B[0;7m>[22;9H(B[m}[23;5H}[24d}[25d[?12l[?25h[?25l[?12l[?25h[26d[?25l[?12l[?25h[27d[?25l[?12l[?25h[28d[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25hs[?25l[?12l[?25ht[?25l[?12l[?25ha[?25l[?12l[?25hg[?25l[?12l[?25he[?25l[?12l[?25h([?25l[?12l[?25h'[?25l[?12l[?25hB[?25l[?12l[?25hu[?25l[?12l[?25hi[?25l[?12l[?25hl[?25l[?12l[?25hd[?25l[?12l[?25h [?25l[?12l[?25hD[?25l[?12l[?25ho[?25l[?12l[?25hc[?25l[?12l[?25hk[?25l[?12l[?25he[?25l[?12l[?25hr[?25l[?12l[?25h [?25l[?12l[?25hI[?25l[?12l[?25hm[?25l[?12l[?25ha[?25l[?12l[?25hg[?25l[?12l[?25he[?25l[?12l[?25h'[?25l[?12l[?25h)[?25l[?12l[?25h [?25l[?12l[?25h{[?25l[?12l[?25h[29d[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25hs[?25l[?12l[?25ht[?25l[?12l[?25he[?25l[?12l[?25hp[?25l[?12l[?25hs[?25l[?12l[?25h [?25l[?12l[?25h{[?25l[?12l[?25h[30d[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25hs[?25l[?12l[?25hc[?25l[?12l[?25hr[?25l[?12l[?25hi[?25l[?12l[?25hp[?25l[?12l[?25ht[?25l[?12l[?25h [?25l[?12l[?25h{[?25l7[2;31r8[31d
+[1;33r[30;21Hecho "🏗️ Building Docker image..."[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[31d(B[0;7mSave modified buffer?                                                                                                                [32;1H Y(B[m Yes[K[33d(B[0;7m N(B[m No  [33;18H(B[0;7mC(B[m Cancel[K[31;23H[?12l[?25h[?25l[32d(B[0;7m^G(B[m Help[32;34H(B[0;7mM-D(B[m DOS Format[32;67H(B[0;7mM-A(B[m Append[32;100H(B[0;7mM-B(B[m Backup File[33d(B[0;7m^C(B[m Cancel[17G         [33;34H(B[0;7mM-M(B[m Mac Format[33;67H(B[0;7mM-P(B[m Prepend[33;100H(B[0;7m^T(B[m Browse[31d(B[0;7mFile Name to Write: Jenkinsfile(B[m[?12l[?25h[?25l[31;59H[1K (B[0;7m[ Writing... ](B[m[K[1;76H(B[0;7m [132G(B[m[31;58H(B[0;7m[ Wrote 64 lines ](B[m[J[33d[?12l[?25h[33;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;riya@DESKTOP-OO2RPRN: ~/flask-cicd[01;32mriya@DESKTOP-OO2RPRN[00m:[01;34m~/flask-cicd[00m$ hit [K[K[K[Kgit add .
+[?2004l[?2004h]0;riya@DESKTOP-OO2RPRN: ~/flask-cicd[01;32mriya@DESKTOP-OO2RPRN[00m:[01;34m~/flask-cicd[00m$ history
+[?2004l  410  eb use Demo-app1-env
+  411  cat .elasticbeanstalk/config.yml
+  412  eb deploy
+  413  eb list
+  414  eb status
+  415  eb use Demo-app1-env
+  416  eb list
+  417  eb status
+  418  cat .elasticbeanstalk/config.yml
+  419  nano .elasticbeanstalk/config.yml
+  420  eb list
+  421  eb status
+  422  eb deploy
+  423  aws cloudformation describe-stack-events   --stack-name awseb-e-ieyqniek7a-stack   --region ap-south-1
+  424  pip3 --version
+  425  python3 --version
+  426  which python
+  427  where python
+  428  eb init -p python-3.10 my-flask-app
+  429  eb platform list
+  430  eb init -p python-3.11 my-flask-app
+  431  eb create my-flask-env
+  432  eb create demo-app-env   --platform "Python 3.11"   --instance_profile aws-ebs-ec2-role   --service_role aws-ebs-service-role   --region ap-south-1   --vpc.id vpc-0ef0f78f7eba73ff5   --vpc.ec2subnets subnet-0f00cb291a1a56368,subnet-07d09f353b8a4b9b4   --vpc.elbsubnets subnet-0f00cb291a1a56368,subnet-07d09f353b8a4b9b4   --vpc.ec2securitygroups sg-0794b8e4afec60f23   --vpc.elbsecuritygroups sg-023578d445048c67e \
+  433  eb ssh
+  434  nano .elasticbeanstalk/config.yml
+  435  eb ssh
+  436  eb platform list
+  437  eb list
+  438  eb status
+  439  eb init
+  440  wb deploy
+  441  eb deploy
+  442  eb status
+  443  eb list
+  444  eb ssh
+  445  ~/.ssh/demo.pem
+  446  mkdir -p ~/.ssh
+  447  mv /path/to/demo.pem ~/.ssh/
+  448  chmod 400 ~/.ssh/demo.pem
+  449  find ~ -type f -name "*.pem"
+  450  mkdir -p ~/.ssh
+  451  mv /home/riya/demo.pem ~/.ssh/
+  452  chmod 400 ~/.ssh/demo.pem
+  453  eb ssh --forcwe
+  454  eb ssh --force
+  455  eb deploy
+  456  eb ssh
+  457  eb logs
+  458  eb printenv | grep PORT
+  459  eb ssh
+  460  curl -i http://localhost:PORT/
+  461  eb ssh -- force
+  462  eb ssh --force
+  463  eb status
+  464  clear
+  465  eb init
+  466  eb create my-practice-env
+  467  eb create my-practice-env   --instance_profile aws-ebs-ec2-role   --service_role aws-ebs-service-role
+  468  eb create my-practice-env   --instance_profile aws-ebs-ec2-role
+  469  eb list
+  470  eb create my-practice-env   --instance_profile aws-elasticbeanstalk-service-role
+  471  clear
+  472  wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+  473  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+  474  sudo apt update && sudo apt install terraform
+  475  clear
+  476  provider "aws" {
+  477  }
+  478  resource "aws_instance" "demo" {
+  479  }
+  480  terraform -v
+  481  mkdir terraform-demo
+  482  cd terraform-demo
+  483  nano main.tf
+  484  terraform init
+  485  terraform plan
+  486  terraform apply
+  487  aws sts get-caller-identity'
+  488  clear\
+  489  clear
+  490  aws sts get-caller-identity
+  491  terraform consoleprovider::aws::account_id
+  492  ~/.aws/credentials
+  493  sudo ~/.aws/credentials
+  494  cd terraform-demo
+  495  terraform destroy
+  496  clear
+  497  cd ..
+  498  scp -i /mnt/c/Users/Riya/Downloads/demo.pem /mnt/c/Users/Riya/Downloads/rehabilitation-yoga.zip ubuntu@3.110.184.178:/home/ubuntu/
+  499  chmod 400 /mnt/c/Users/Riya/Downloads/demo.pem
+  500  scp -i /mnt/c/Users/Riya/Downloads/demo.pem /mnt/c/Users/Riya/Downloads/rehabilitation-yoga.zip ubuntu@3.110.184.178:/home/ubuntu/
+  501  chmod 400 ~/.ssh/demo.pem
+  502  scp -i ~/.ssh/demo.pem /mnt/c/Users/Riya/Downloads/rehabilitation-yoga.zip ubuntu@3.110.184.178:/home/ubuntu/
+  503  ssh -i ~/.ssh/demo.pem ubuntu@3.110.184.178
+  504  http://3.110.184.178
+  505  curl http://3.110.184.178
+  506  clear
+  507  ssh -i ~/.ssh/demo.pem ubuntu@3.110.184.178
+  508  http://3.110.184.178/rehabilitation-yoga/
+  509  ssh -i ~/.ssh/demo.pem ubuntu@3.110.184.178
+  510  scp -i ~/.ssh/demo.pem /mnt/c/Users/Riya/Downloads/frozenyogurtshop.zip ubuntu@13.201.76.245:/home/ubuntu/
+  511  ssh -i ~/.ssh/demo.pem ubuntu@13.201.76.245
+  512  sudo nano /etc/nginx/sites-available/default
+  513  ssh -i ~/.ssh/demo.pem ubuntu@13.201.76.245
+  514  aws elbv2 describe-target-health --target-group-arn arn:aws:elasticloadbalancing:ap-south-1:637829421202:targetgroup/practice/3a35a08f13575776
+  515  sudo tee /etc/nginx/sites-available/default > /dev/null <<EOF
+  516  server {
+  517      listen 80 default_server;
+  518      listen [::]:80 default_server;
+  519      root /var/www/html/frozenyogurtshop;
+  520      index index.html;
+  521      server_name _;
+  522      location / {
+  523          try_files \$uri \$uri/ =404;
+  524      }
+  525  }
+  526  EOF
+  527  ssh -i demo.pem ubuntu@13.201.76.245
+  528  ssh -i ~/.ssh/demo.pem ubuntu@13.201.76.245
+  529  aws elbv2 describe-target-health   --target-group-arn arn:aws:elasticloadbalancing:ap-south-1:637829421202:targetgroup/practice/3a35a08f13575776
+  530  aws elbv2 describe-target-health   --target-group-arn arn:aws:elasticloadbalancing:ap-south-1:637829421202:targetgroup/practice/3a35a08f13575776
+  531  for i in {1..10}; do   curl -s http://practice-alb-1853240459.ap-south-1.elb.amazonaws.com/ | grep "<title>"; done
+  532  ssh -i ~/.ssh/demo.pem ubuntu@13.201.76.245
+  533  ssh -i ~/.ssh/demo.pem ubuntu@3.110.184.178
+  534  for i in {1..10}; do   curl -s http://practice-alb-1853240459.ap-south-1.elb.amazonaws.com/ | grep "<title>"; done
+  535  clear
+  536  resource "aws_s3_bucket" "demo"{
+  537  resource "aws_s3_bucket" "demo"{ bucket="riya-practice-demo-2025" acl = "private" }
+  538  ls
+  539  cd terraform-demo
+  540  resource "aws_s3_bucket" "demo"{ bucket="riya-practice-demo-2025" acl = "private" }
+  541  nano s3.tf
+  542  transform init
+  543  terraform init
+  544  nano s3.tf
+  545  terraform init
+  546  terraform plan
+  547  nano s3.tf
+  548  terraform init
+  549  nano s3.tf
+  550  terraform init
+  551  terraform plan
+  552  terraform apply
+  553  terraform destroy
+  554  ls -la .terraform
+  555  ls -la .terraform/providers
+  556  ls -la .terraform/providers/registry.terraform.io
+  557  ls -la .terraform/providers/registry.terraform.io/hashicorp
+  558  ls -la .terraform/providers/registry.terraform.io/hashicorp/aws
+  559  ls -la .terraform/providers/registry.terraform.io/hashicorp/aws/6.9.0
+  560  ls -la .terraform/providers/registry.terraform.io/hashicorp/aws/6.9.0/linux_amd64
+  561  cd ..
+  562  cd var/www/html
+  563  cd /var/www/html
+  564  ls
+  565  cd terraform-demo
+  566  nano vpc.tf
+  567  terraform init
+  568  nano vpc.tf
+  569  terraform init
+  570  nano vpc.tf
+  571  terraform init
+  572  nano vpc.tf
+  573  terraform validate
+  574  nano vpc.tf
+  575  terraform validate
+  576  terraform init
+  577  terraform plan
+  578  nano vpc.tf
+  579  terraform plan
+  580  terraform apply
+  581  terraform destroy
+  582  cd ..
+  583  clear
+  584  sudo apt-get update
+  585  sudo apt-get install -y ca-certificates curl gnupg lsb-release
+  586  sudo mkdir -p /etc/apt/keyrings
+  587  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  588  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  589    https://download.docker.com/linux/ubuntu \
+  590    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  591  sudo apt-get update
+  592  sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  593  sudo docker --version
+  594  sudo docker run hello-world
+  595  docker ps
+  596  sudo docker ps
+  597  sudo docker images
+  598  sudo docker ps -a
+  599  docker pull ubuntu
+  600  docker pull nginx
+  601  sudo docker pull ubuntu
+  602  ls
+  603  docker --version
+  604  docker run helloworld
+  605  docker run hello-world
+  606  sudo docker run hello-world
+  607  clear
+  608  ssh -i ~/.ssh/id_rsa.pem azureuser@20.40.40.14
+  609  cp /mnt/c/Users/Riya/Downloads/id_rsa.pem ~/.ssh/
+  610  cp /mnt/c/Users/Riya/Downloads/practice.pem ~/.ssh/
+  611  chmod 600 ~/.ssh/practice.pem
+  612  ssh -i ~/.ssh/practice.pem azureuser@20.40.40.14
+  613  ssh -i ~/.ssh/practice.pem azureuser@20.235.31.124
+  614  ssh -i ~/.ssh/practice.pem azureuser@10.0.1.4
+  615  ssh -i ~/.ssh/practice.pem azureuser@20.235.31.124
+  616  ssh -i ~/.ssh/practice.pem azureuser@20.40.40.14
+  617  clear
+  618  ssh -i ~/.ssh/practice.pem azureuser@20.198.17.212
+  619  ssh -i "demo.pem" ubuntu@ec2-13-127-67-139.ap-south-1.compute.amazonaws.com
+  620  ssh -i ~/.ssh/demo.pem ubuntu@13.127.67.139
+  621  history
+  622  chmod 400 "demo.pem"
+  623  clear
+  624  ls
+  625  ls
+  626  vi demo.pem
+  627  ls
+  628  chmod 400 "demo.pem"
+  629  ssh -i "demo.pem" ubuntu@ec2-13-127-67-139.ap-south-1.compute.amazonaws.com
+  630  telnet ec2-13-127-67-139.ap-south-1.compute.amazonaws.com 22
+  631  ssh -i "demo.pem" ubuntu@ec2-13-201-77-109.ap-south-1.compute.amazonaws.com
+  632  chmod 400 "demo.pem"
+  633  ssh -i "demo.pem" ubuntu@ec2-13-201-77-109.ap-south-1.compute.amazonaws.com
+  634  ls
+  635  history
+  636  clear
+  637  ssh -i ~/demo.pem ubuntu@13.201.77.109
+  638  chmod 400 "demo.pem"
+  639  ssh -i ~/demo.pem ubuntu@13.201.77.109
+  640  ssh -i demo.pem ubuntu@13.201.77.109 -vvv
+  641  ssh -i "demo.pem" ubuntu@13.201.77.109
+  642  ssh -i "demo.pem" ubuntu@ec2-13-201-77-109.ap-south-1.compute.amazonaws.com
+  643  clear
+  644  chmod 400 practice.pem
+  645  ssh -i practice.pem azureuser@4.213.123.79
+  646  clear
+  647  ls
+  648  ssh -i ~/.ssh/practice.pem azureuser@<PublicIP>
+  649  ssh -i ~/.ssh/practice.pem azureuser@4.213.123.79
+  650  clear
+  651  ls -l ~/.ssh
+  652  chmod 400 ~/.ssh/practice.pem
+  653  ssh -i ~/.ssh/practice.pem azureuser@4.213.123.79
+  654  ssh -i practice.pem azureuser@4.213.123.79
+  655  chmod 400 ~/.ssh/practice.pem
+  656  ssh -i practice.pem azureuser@4.213.123.79
+  657  ssh -i ~/.ssh/practice.pem azureuser@4.213.123.79
+  658  ssh -i practice.pem azureuser@4.213.123.79
+  659  ls
+  660  ls -l ~/.ssh
+  661  ssh -i ~/.ssh/practice.pem azureuser@4.213.123.79
+  662  ssh -i ~/.ssh/practice.pem azureuser@10.0.0.4
+  663  ls
+  664  vi practice.pem
+  665  ls
+  666  chmod 400 practice.pem
+  667  ssh -i practice.pem azureuser@4.213.123.79
+  668  ssh -i "demo.pem" ubuntu@ec2-43-204-115-37.ap-south-1.compute.amazonaws.com
+  669  clear
+  670  chmod 400 ~/.ssh/practice.pem
+  671  ssh -i ~/.ssh/practice.pem azureuser@20.197.2.42
+  672  ssh -i ~/.ssh/practice.pem azureuser@10.0.0.4
+  673  clear
+  674  aws s3 mb s3://riya-local-backup-2025 --region ap-south-1
+  675  nano backup-to-s3.sh
+  676  chmod +x ~/backup-to-s3.sh
+  677  ./backup-to-s3.sh
+  678  nano backup-to-s3.sh
+  679  ./backup-to-s3.sh
+  680  nano backup-to-s3.sh
+  681  crontab -e
+  682  crontab -l
+  683  crontab -e
+  684  grep CRON /var/log/syslog
+  685  nano backup-to-s3.sh
+  686  bash /home/riya/backup-to-s3.sh
+  687  cat /home/riya/backup.log
+  688  nano backup-to-s3.sh
+  689  bash /home/riya/backup-to-s3.sh
+  690  cat /home/riya/backup.log
+  691  bash /home/riya/backup-to-s3.sh >> /home/riya/backup.log 2>&1
+  692  cat /home/riya/backup.log
+  693  clear
+  694  curl -X POST https://uu2or8jhc8.execute-api.us-east-1.amazonaws.com/dev/users -H "Content-Type: application/json" -d '{"name": "Riya", "email": "riya@example.com"}'
+  695  clear
+  696  cat /home/riya/backup.log
+  697  clear
+  698  chmod 400 "demo.pem"
+  699  ssh -i "demo.pem" ubuntu@ec2-3-110-188-251.ap-south-1.compute.amazonaws.com
+  700  chmod 400 "demo.pem"
+  701  ssh -i "demo.pem" ubuntu@ec2-3-110-188-251.ap-south-1.compute.amazonaws.com
+  702  ssh -i "demo.pem" ec2-user@ec2-13-232-149-14.ap-south-1.compute.amazonaws.com
+  703  clear
+  704  ssh -i "demo.pem" ec2-user@ec2-13-232-149-14.ap-south-1.compute.amazonaws.com
+  705  cat /home/riya/backup.log
+  706  clear
+  707  cat /home/riya/backup.log
+  708  crontab -l
+  709  sudo apt update
+  710  sudo apt install anacron
+  711  sudo nano /etc/anacrontab
+  712  chmod +x /home/riya/backup-to-s3.sh
+  713  anacron -n -d
+  714  sudo anacron -n -d
+  715  sudo anacron -s
+  716  wsl bash -ic "/home/riya/backup-to-s3.sh >> /home/riya/backup.log 2>&1"
+  717  cat /home/riya/backup.log
+  718  which aws
+  719  aws s3 cp ...
+  720  /snap/bin/aws s3 cp ...
+  721  sudo /snap/bin/aws s3 cp ...
+  722  vi backup-to-s3.sh
+  723  nano /home/riya/backup-to-s3.sh
+  724  nano backup-to-s3.sh
+  725  history
+  726  nano backup-to-s3.sh
+  727  nano /home/riya/backup-to-s3.sh
+  728  chmod +x /home/riya/backup-to-s3.sh
+  729  /home/riya/backup-to-s3.sh
+  730  cat /home/riya/backup.log
+  731  aws configure --profile backup
+  732  clear
+  733  chmod 400 "demo.pem"
+  734  ssh -i "demo.pem" ubuntu@ec2-43-205-144-97.ap-south-1.compute.amazonaws.com
+  735  ssh -i "demo.pem" ubuntu@ec2-13-200-229-140.ap-south-1.compute.amazonaws.com
+  736  ssh -i "demo.pem" ubuntu@ec2-43-205-144-97.ap-south-1.compute.amazonaws.com
+  737  ssh -i "demo.pem" ubuntu@ec2-13-200-229-140.ap-south-1.compute.amazonaws.com
+  738  cat /home/riya/backup.log
+  739  free -h
+  740  which ls
+  741  who -b
+  742  netstat -tuln
+  743  w
+  744  ssh -i "demo.pem" ubuntu@ec2-13-234-217-242.ap-south-1.compute.amazonaws.com
+  745  ssh -i "demo.pem" ubuntu@ec2-13-201-13-132.ap-south-1.compute.amazonaws.com
+  746  cat /home/riya/backup.log
+  747  clear
+  748  ssh -i "demo.pem" ubuntu@ec2-13-234-217-242.ap-south-1.compute.amazonaws.com
+  749  scp -i "C:\Users\Riya\demo.pem" "C:\Users\Riya\Downloads\frozenyogurtshop.zip" ubuntu@13.234.217.242:~
+  750  scp -i "C:\Users\Riya\Downloads\demo.pem" "C:\Users\Riya\Downloads\frozenyogurtshop.zip" ubuntu@13.234.217.242:~
+  751  ssh -i "demo.pem" ubuntu@ec2-13-234-217-242.ap-south-1.compute.amazonaws.com
+  752  scp -i "C:\Users\Riya\Downloads\demo.pem" "C:\Users\Riya\Downloads\frozenyogurtshop.zip" ubuntu@13.234.217.242:~
+  753  scp -i /mnt/c/Users/Riya/Downloads/demo.pem /mnt/c/Users/Riya/Downloads/frozenyogurtshop.zip ubuntu@13.234.217.242:~
+  754  chmod 400 /mnt/c/Users/Riya/Downloads/demo.pem
+  755  clear
+  756  scp -i /mnt/c/Users/Riya/Downloads/demo.pem /mnt/c/Users/Riya/Downloads/frozenyogurtshop.zip ubuntu@13.234.217.242:~
+  757  cp /mnt/c/Users/Riya/Downloads/demo.pem ~/demo.pem
+  758  chmod 400 ~/demo.pem
+  759  scp -i ~/demo.pem /mnt/c/Users/Riya/Downloads/frozenyogurtshop.zip ubuntu@13.234.217.242:~
+  760  ssh -i ~/demo.pem ubuntu@13.234.217.242
+  761  history
+  762  cat /home/riya/backup.log
+  763  clear
+  764  ssh -i "demo.pem" ubuntu@ec2-43-205-117-212.ap-south-1.compute.amazonaws.com
+  765  ssh -i "demo.pem" ubuntu@ec2-3-108-66-3.ap-south-1.compute.amazonaws.com
+  766  clear
+  767  ssh -i "demo.pem" ubuntu@ec2-65-2-169-213.ap-south-1.compute.amazonaws.com
+  768  ssh -i "demo.pem" ubuntu@ec2-65-2-189-104.ap-south-1.compute.amazonaws.com
+  769  ssh -i revise.pem azureuser@4.186.25.209
+  770  ls
+  771  cat revise.pem
+  772  sudo nano revise.pem
+  773  vi revise.pem
+  774  ls
+  775  ssh -i revise.pem azureuser@4.186.25.209
+  776  chmod 600 revise.pem
+  777  ssh -i revise.pem azureuser@4.186.25.209
+  778  cat /home/riya/backup.log
+  779  clear
+  780  chmod 400 "demo.pem"
+  781  ssh -i "demo.pem" ubuntu@ec2-52-66-203-5.ap-south-1.compute.amazonaws.com
+  782  clear
+  783  ssh -i "demo.pem" ubuntu@ec2-13-127-236-5.ap-south-1.compute.amazonaws.com
+  784  cat /home/riya/backup.log
+  785  clear
+  786  free -h
+  787  netstat
+  788  su
+  789  w
+  790  dmseg
+  791  dmesg
+  792  uname -a
+  793  df -h
+  794  ifconfig
+  795  top
+  796  /etc/shadow
+  797  /etc/password
+  798  chgrp
+  799  wc -l
+  800  cat /home/riya/backup.log
+  801  clear
+  802  ls
+  803  rm practice.pem
+  804  ls
+  805  rm practice.pem
+  806  ls
+  807  rmdir practice
+  808  rm revise.pem
+  809  ls
+  810  vi practice.pem
+  811  ls
+  812  clear
+  813  ssh -i practice.pem azureuser@4.186.27.126
+  814  chmod 644 practice.pem
+  815  ssh -i practice.pem azureuser@4.186.27.126
+  816  chmod 777 practice.pem
+  817  ssh -i practice.pem azureuser@4.186.27.126
+  818  chmod 400 practice.pem
+  819  ssh -i practice.pem azureuser@4.186.27.126
+  820  ls
+  821  rm practice.pem
+  822  ls
+  823  sudo vi azure.pem
+  824  chmod 0744 azure.pem
+  825  chmod 400 azure.pem
+  826  ssh -i azure.pem azureuser@4.240.98.149
+  827  ssh -i azure.pem azureuser@40.81.230.47
+  828  ls
+  829  rm azure.pem
+  830  cd practice
+  831  ls
+  832  cd 
+  833  cd ..
+  834  cd /
+  835  cd ~
+  836  cd riya
+  837  ls
+  838  cd 
+  839  cd snap
+  840  ls
+  841  cd 
+  842  cd terraform-demo
+  843  ls
+  844  cd 
+  845  ls
+  846  clear
+  847  cat /home/riya/backup.log
+  848  clear
+  849  ssh -i "demo.pem" ubuntu@ec2-52-66-159-129.ap-south-1.compute.amazonaws.com
+  850  cat /home/riya/backup.log
+  851  clear
+  852  aws configure
+  853  aws s3 ls
+  854  q login
+  855  sudo snap install q
+  856  sudo apt update -y
+  857  wget https://desktop-release.q.us-east-1.amazonaws.com/latest/amazon-q.deb
+  858  sudo apt-get install -f
+  859  sudo dpkg -i amazon-q.deb
+  860  q --version
+  861  q login
+  862  q
+  863  git clone https://github.com/OpenVPN/easy-rsa.git
+  864  cd easy-rsa/easyrsa3
+  865  ./easyrsa init-pki
+  866  ./easyrsa build-ca nopass          # produces pki/ca.crt
+  867  ./easyrsa --subject-alt-name="DNS:server" build-server-full server nopass # creates pki/issued/server.crt and pki/private/server.key
+  868  ./easyrsa build-client-full client1.domain.tld nopass # creates pki/issued/client1.domain.tld.crt and pki/private/client1.domain.tld.key
+  869  ./easyrsa gen-crl
+  870  wsl ls ~/easy-rsa/easyrsa3/pki/issued
+  871  sudo apt install wsl
+  872  wsl ls ~/easy-rsa/easyrsa3/pki/issued
+  873  cat ~/easy-rsa/easyrsa3/pki/ca.crt
+  874  cat ~/easy-rsa/easyrsa3/pki/issued/server.crt
+  875  cat ~/easy-rsa/easyrsa3/pki/private/server.key
+  876  cat ~/easy-rsa/easyrsa3/pki/issued/client1.domain.tld.crt
+  877  ls pki/crl.pem
+  878  cat pki/crl.pem
+  879  sudo apt update
+  880  sudo apt install openvpn -y
+  881  sudo openvpn --config ~/aws-client.ovpn
+  882  cp /mnt/c/Users/Riya/Downloads/downloaded-client-config.ovpn ~/
+  883  ls ~
+  884  # should show client-vpn-config.ovpn
+  885  sudo openvpn --config ~/downloaded-client-config.ovpn
+  886  ping *.cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com
+  887  curl https:// *.cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com:443
+  888  curl -v https://cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com:443
+  889  ping cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com
+  890  nslookup cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com
+  891  proto tcp
+  892  ping cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com
+  893  ping cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com 443
+  894  sudo openvpn --config ~/downloaded-client-config.ovpn
+  895  ping cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com 443
+  896  ping cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com
+  897  curl -v https://cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com:443
+  898  cat downloaded-client-config.ovpn
+  899  sudo openvpn --config ~/downloaded-client-config.ovpn
+  900  sudo ufw status
+  901  sudo iptables -L
+  902  telnet cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com 443
+  903  nc -vz cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com 443
+  904  nslookup cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com
+  905  sudo nano /etc/resolv.conf
+  906  nslookup cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com
+  907  sudo nano /etc/resolv.conf
+  908  sudo openvpn --config ~/downloaded-client-config.ovpn
+  909  nslookup cvpn-endpoint-017be4842fc98179e.prod.clientvpn.ap-south-1.amazonaws.com
+  910  curl ifconfig.me
+  911  sudo openvpn --config ~/downloaded-client-config.ovpn
+  912  curl https://checkip.amazonaws.com
+  913  curl ifconfig.me
+  914  sudo openvpn --config ~/downloaded-client-config.ovpn
+  915  cd 
+  916  q
+  917  ls
+  918  nano new.pem
+  919  ls
+  920  rm demo.pem
+  921  ls
+  922  rm downloaded-client-config.ovpn 
+  923  ls
+  924  aws configure
+  925  aws s3 ls
+  926  q
+  927  clear
+  928  q
+  929  ls
+  930  nano new.pem 
+  931  rm new.pem
+  932  ls
+  933  nano new.pem
+  934  ls
+  935  rmdir easy-rsa/
+  936  rmdir -f easy-rsa/
+  937  clear
+  938  openssl req -new -newkey rsa:2048 -nodes -keyout key.pem -out csr.pem -subj "/CN=*.nip.io"
+  939  openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out cert.pem
+  940  cat cert.pem
+  941  cat key.pem
+  942  chmod 400 "new.pem"
+  943  ssh -i "new.pem" ubuntu@13.59.221.66
+  944  ssh -i "new.pem" ubuntu@13.59.221.66
+  945  chmod 400 "new.pem"
+  946  ssh -i "new.pem" ubuntu@13.59.221.66
+  947  clear
+  948  chmod 400 "new.pem"
+  949  ssh -i "new.pem" ubuntu@ec2-18-117-229-53.us-east-2.compute.amazonaws.com
+  950  curl google.com
+  951  ping google.com
+  952  pwd
+  953  ls -la
+  954  aws configure
+  955  aws s3 ls
+  956  ifconfig
+  957  ip link
+  958  ping google.com
+  959  route -n
+  960  ip route
+  961  nslookup google.com
+  962  host google.com
+  963  clear
+  964  chmod 400 "new.pem"
+  965  ssh -i "new.pem" ubuntu@ec2-18-191-14-113.us-east-2.compute.amazonaws.com
+  966  clear
+  967  chmod 400 "new.pem"
+  968  ssh -i "new.pem" ubuntu@ec2-13-59-197-95.us-east-2.compute.amazonaws.com
+  969  ssh -i "new.pem" ubuntu@3.145.202.180
+  970  chmod 400 "new.pem"
+  971  ssh -i "new.pem" ubuntu@3.145.202.180
+  972  chmod 400 "new.pem"
+  973  ssh -i "new.pem" ubuntu@3.145.202.180
+  974  ssh -i "new.pem" ubuntu@10.0.2.145
+  975  clear
+  976  ssh -i "new.pem" ubuntu@ec2-3-149-233-227.us-east-2.compute.amazonaws.com
+  977  clear
+  978  aws configure
+  979  clear
+  980  ls
+  981  nano backup-to-s3.sh
+  982  crontab -e
+  983  chmod +x /home/riya/backup-to-s3.sh
+  984  nano backup-to-s3.sh
+  985  /home/riya/backup-to-s3.sh
+  986  cat /home/riya/backup.log
+  987  clear
+  988  which aws
+  989  cat /home/riya/backup.log
+  990  clear
+  991  aws configure
+  992  aws s3 ls
+  993  npm install -g @aws-amplify/cli
+  994  amplify configure
+  995  npm install -g @aws-amplify/cli
+  996  sudo apt install npm
+  997  sudo apt update -y
+  998  sudo apt install npm
+  999  apt --fix-broken install
+ 1000  sudo apt install nodejs npm -y
+ 1001  sudo apt update
+ 1002  sudo apt install nodejs npm -y
+ 1003  sudo apt --fix-broken install -y
+ 1004  sudo apt autoremove -y
+ 1005  sudo apt remove -y nodejs npm
+ 1006  curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+ 1007  sudo apt install -y nodejs
+ 1008  node -v
+ 1009  npm -v
+ 1010  npm install -g @aws-amplify/cli
+ 1011  sudo npm install -g @aws-amplify/cli
+ 1012  amplify -v
+ 1013  npm install -g npm@11.6.1
+ 1014  sudo npm install -g npm@11.6.1
+ 1015  sudo npm fund
+ 1016  amplify configure
+ 1017  npx create-react-app cloud-dictionary
+ 1018  cd cloud-dictionary
+ 1019  amplify init
+ 1020  amplify hosting add
+ 1021  amplify publish
+ 1022  amplify init
+ 1023  amplify add api
+ 1024  amplify add function
+ 1025  amplify push
+ 1026  amplify remove function
+ 1027  amplify push
+ 1028  amplify add api
+ 1029  amplify push
+ 1030  curl https://ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev
+ 1031  curl "https://ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev/define?word=cloud"
+ 1032  amplify status
+ 1033  curl https://ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev
+ 1034  cat amplify/backend/api/dictionaryapi/parameters.json
+ 1035  amplify update api
+ 1036  amplify push
+ 1037  amplify status
+ 1038  curl https://ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev
+ 1039  cat amplify/backend/api/dictionaryapi/parameters.json
+ 1040  curl "https://<api-id>.execute-api.<region>.amazonaws.com/dev/define?word=cloud"
+ 1041  curl "https://./ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev/define?word=cloud"
+ 1042  curl "https://ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev/define?word=cloud"
+ 1043  amplify function logs newdictionaryLambda
+ 1044  amplify update function
+ 1045  amplify/backend/function/newdictionaryLambda/custom-policies.json
+ 1046  curl "https://ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev/define?word=cloud"
+ 1047  aws dynamodb put-item     --table-name Dictionary     --item '{"word": {"S": "cloud"}, "meaning": {"S": "A visible mass of condensed water vapor floating in the atmosphere."}}'     --region us-east-2
+ 1048  cd 
+ 1049  aws configure
+ 1050  cd cloud-dictionary
+ 1051  aws dynamodb put-item     --table-name Dictionary     --item '{"word": {"S": "cloud"}, "meaning": {"S": "A visible mass of condensed water vapor floating in the atmosphere."}}'     --region us-east-2
+ 1052  amplify update function
+ 1053  amplify status
+ 1054  amplify push
+ 1055  sudo nano parameters.json
+ 1056  sudo nano amplify/backend/storage/Dictionary/parameters.json
+ 1057  cat  amplify/backend/storage/Dictionary/parameters.json
+ 1058  amplify push
+ 1059  aws dynamodb put-item     --table-name <exact-table-name-from-list-tables>     --item '{"word": {"S": "cloud"}, "meaning": {"S": "A visible mass of condensed water vapor floating in the atmosphere."}}'     --region us-east-2
+ 1060  aws dynamodb put-item     --table-name Dictionary-dev    --item '{"word": {"S": "cloud"}, "meaning": {"S": "A visible mass of condensed water vapor floating in the atmosphere."}}'     --region us-east-2
+ 1061  curl " https://ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev/define?word=cloud"
+ 1062  curl "https://ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev/define?word=cloud"
+ 1063  curl "https://ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev/define/get/word=cloud"
+ 1064  https://ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev/define/word=cloud"
+ 1065  https://ntqnliy1z0.execute-api.us-east-2.amazonaws.com/dev/define/word=cloud"
+ 1066  coud
+ 1067  amplify remove function
+ 1068  amplify remove api
+ 1069  amplify remove function
+ 1070  amplify push
+ 1071  amplify remove storage
+ 1072  amplify remove auth
+ 1073  amplify push
+ 1074  amplify init
+ 1075  amplify add storage
+ 1076  amplify add api
+ 1077  a
+ 1078  curl https://4ge5cby50h.execute-api.us-east-2.amazonaws.com/dev
+ 1079  aws dynamodb put-item     --table-name DictionaryDev     --item '{"word": {"S": "cloud"}, "meaning": {"S": "A visible mass of condensed water vapor floating in the atmosphere."}}'     --region us-east-2
+ 1080  amplify update function
+ 1081  amplify push
+ 1082  nano amplify/backend/storage/DictionaryDev/parameters.json
+ 1083  amplify push
+ 1084  amplify update status
+ 1085  amplify update function
+ 1086  amplify push
+ 1087  amplify add function
+ 1088  amplify push
+ 1089  nano amplify/backend/storage/DictionaryDev-dev/parameters.json
+ 1090  nano amplify/backend/storage/DictionaryDev/parameters.json
+ 1091  amplify update function
+ 1092  amplify push
+ 1093  nano amplify/backend/storage/DictionaryDev-dev/parameters.json
+ 1094  nano amplify/backend/storage/DictionaryDev/parameters.json
+ 1095  amplify push
+ 1096  amplify push --force
+ 1097  amplify update api
+ 1098  amplify push
+ 1099  amplify remove api
+ 1100  amplify remove function
+ 1101  amplify remove storage
+ 1102  amplify remove api
+ 1103  amplify remove auth
+ 1104  amplify push
+ 1105  amplify remove api
+ 1106  amplify remove storage
+ 1107  amplify push
+ 1108  amplify remove function
+ 1109  amplify push
+ 1110  amplify env remove dev
+ 1111  amplify delete
+ 1112  rm -rf amplify/.config/local-env-info.json
+ 1113  cat /home/riya/backup.log
+ 1114  clear
+ 1115  df -h
+ 1116  du -sh
+ 1117  ls
+ 1118  du -sh cloud-dictionary/
+ 1119  du -h
+ 1120  cat /riya/home/backup.log
+ 1121  cat /home/riya/backup.log
+ 1122  man ls
+ 1123  man top
+ 1124  whatis grep
+ 1125  whatis ls
+ 1126  whatis ls -a
+ 1127  whatis find
+ 1128  clear
+ 1129  cat /home/riya/backup.sh
+ 1130  cat /home/riya/backup.log
+ 1131  ssh -i "new.pem" ec2-user@ec2-18-216-157-198.us-east-2.compute.amazonaws.com
+ 1132  cat /home/riya/backup.log
+ 1133  clear
+ 1134  ls
+ 1135  cd backup.log
+ 1136  cat backup.log
+ 1137  clear
+ 1138  history
+ 1139  clear
+ 1140  ls
+ 1141  cd man
+ 1142  ls man
+ 1143  man ls
+ 1144  man cd
+ 1145  clear
+ 1146  ifconfig
+ 1147  traceroute
+ 1148  bg
+ 1149  jobs
+ 1150  telnet ip port
+ 1151  netstat -putan |grep 80
+ 1152  hostname
+ 1153  lsblk
+ 1154  uname -a
+ 1155  cat /etc/os-release
+ 1156  arch
+ 1157  printenv
+ 1158  clear
+ 1159  q
+ 1160  ls
+ 1161  cat backup.log
+ 1162  nslookup google.com
+ 1163  arp -a
+ 1164  hostname
+ 1165  netstat -a
+ 1166  cat backup.log
+ 1167  clear
+ 1168  ssh -i "new.pem" ec2-user@ec2-18-222-159-223.us-east-2.compute.amazonaws.com
+ 1169  clear
+ 1170  cat backup.log
+ 1171  clear
+ 1172  net start
+ 1173  Jenkins --version
+ 1174  # On Jenkins master / workspace
+ 1175  cd /var/lib/jenkins/workspace/EC2-Deploy-Pipeline
+ 1176  rm -rf *
+ 1177  # Then trigger pipeline again
+ 1178  rm -rf *
+ 1179  sudo rm -rf *
+ 1180  sudo apt update
+ 1181  sudo apt install fontconfig openjdk-17-jre -y
+ 1182  java -version
+ 1183  curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+ 1184  echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]   https://pkg.jenkins.io/debian binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+ 1185  sudo apt update
+ 1186  sudo apt install jenkins -y
+ 1187  sudo systemctl start jenkins
+ 1188  sudo systemctl enable jenkins
+ 1189  sudo systemctl status jenkins
+ 1190  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+ 1191  git --version
+ 1192  ssh -i "new.pem" ubuntu@ec2-13-58-49-242.us-east-2.compute.amazonaws.com
+ 1193  clear
+ 1194  ssh new.pem ubuntu@13.58.49.242
+ 1195  ssh -i new.pem ubuntu@13.58.49.242
+ 1196  ngrok http 8080
+ 1197  sudo snap install ngrok
+ 1198  ngrok http 8080
+ 1199  sudo apt update
+ 1200  sudo apt install -y openjdk-17-jdk
+ 1201  curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+ 1202  echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+ 1203  ngrok http 8080
+ 1204  curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc   | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null   && echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main"   | sudo tee /etc/apt/sources.list.d/ngrok.list   && sudo apt update   && sudo apt install ngrok
+ 1205  ngrok config add-authtoken 340efs79mNJc0ZZ3Gch1KVMWC9K_5P4xx13b8ddYrS5mXxpfS
+ 1206  ngrok http 80
+ 1207  ngrok http 8080
+ 1208  Call internal services from your gateway: https://ngrok.com/r/http-request
+ 1209  ngrok config add-authtoken $YOUR_AUTHTOKEN
+ 1210  ngrok config add-authtoken 340efs79mNJc0ZZ3Gch1KVMWC9K_5P4xx13b8ddYrS5mXxpfS
+ 1211  ngrok http 8080
+ 1212  c
+ 1213  cat backup.log
+ 1214  history
+ 1215  sudo systemctl start jenkins
+ 1216  sudo apt update
+ 1217  sudo apt install git -y
+ 1218  git --version
+ 1219  git config --global user.name "Riya"
+ 1220  git config --global user.email "rhiya2624@gmail.com"
+ 1221  git config --list
+ 1222  git config --global init.defaultBranch main
+ 1223  git status
+ 1224  git init
+ 1225  git clone https://github.com/rhiya02/simple-webapp
+ 1226  git status
+ 1227  ls
+ 1228  cat backup.log
+ 1229  clear
+ 1230  $ wget -q -O - https://archive.kali.org/archive-key.asc | gpg --import
+ 1231  wget -q -O - https://archive.kali.org/archive-key.asc | gpg --import
+ 1232  gpg --fingerprint 827C8569F2518CC677FECA1AED65462EC8D5E4C5
+ 1233  clear
+ 1234  ls
+ 1235  sudo apt install
+ 1236  sudo apt install ca-certificates curl gnupg lsb-release -y
+ 1237  sudo mkdir -p /etc/apt/keyrings
+ 1238  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+ 1239  echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+ 1240  sudo apt update 
+ 1241  sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y 
+ 1242  sudo docker --version 
+ 1243  sudo systemctl status docker
+ 1244  docker pull nginx
+ 1245  docker pull nginx latest
+ 1246  sudo docker pull nginx
+ 1247  docker run -d -p 8080:80 --name mynginx nginx
+ 1248  sudo docker run -d -p 8080:80 --name mynginx nginx
+ 1249  sudo usermod -aG docker $USER
+ 1250  newgrp docker
+ 1251  docker run hello-world
+ 1252  docker run -d -p 8080:80 --name mynginx nginx
+ 1253  docker run -d -p 8080:80 --name mynginxx nginx
+ 1254  sudo lsof -i :8080
+ 1255  sudo systemctl stop jenkins
+ 1256  sudo lsof -i :8080
+ 1257  docker run -d -p 8080:80 --name mynginx nginx
+ 1258  docker run -d -p 8080:80 --name mynginxx nginx
+ 1259  docker run -d -p 8080:80 --name mynginxxx nginx
+ 1260  docker ps
+ 1261  curl http://localhost:8080
+ 1262  docker images
+ 1263  docker rmi  9d0e6f6199dc
+ 1264  docker stop 9d0e6f6199dc
+ 1265  docker stop f2e6d8532706
+ 1266  docker rm f2e6d8532706
+ 1267  docker rmi nginx
+ 1268  docker stop a1fc409b2e49
+ 1269  docker rm a1fc409b2e49
+ 1270  docker rmi nginx
+ 1271  docker stop c8980476fb6d
+ 1272  docker rm c8980476fb6d
+ 1273  docker rmi nginx
+ 1274  docker images
+ 1275  docker rmi hello-world ubuntu
+ 1276  docker system prune -a
+ 1277  docker images
+ 1278  docker login
+ 1279  clear
+ 1280  history
+ 1281  clear
+ 1282  mkdir flask-mysql-app
+ 1283  cd flask-mysql-app/
+ 1284  mkdir app
+ 1285  cd app
+ 1286  nano app.py
+ 1287  nano requirements.txt
+ 1288  nano Dockerfile
+ 1289  cd
+ 1290  cd flask-mysql-app/
+ 1291  nano docker-compose.yml
+ 1292  ls
+ 1293  docker-compose up -d
+ 1294  sudo apt install wsl
+ 1295  wsl --shutdown
+ 1296  docker ps
+ 1297  docker-compose up -d
+ 1298  docker-compose ps
+ 1299  docker compose down
+ 1300  docker compose down --volumes --rmi all
+ 1301  docker ps
+ 1302  docker ps -a
+ 1303  cd
+ 1304  docker ps -a
+ 1305  docker system df
+ 1306  docker system prune -a
+ 1307  docker system df
+ 1308  docker images
+ 1309  history
+ 1310  sudo lsof -i :8080
+ 1311  sudo lsof -i :5000
+ 1312  clear
+ 1313  docker run -d   --name jenkins   -p 8080:8080 -p 50000:50000   -v /var/run/docker.sock:/var/run/docker.sock   -v jenkins_home:/var/jenkins_home   jenkins/jenkins:lts
+ 1314  sudo systemctl status jenkins
+ 1315  docker run -d   --name jenkins   -p 8080:8080 -p 50000:50000   -v /var/run/docker.sock:/var/run/docker.sock   -v jenkins_home:/var/jenkins_home   jenkins/jenkins:lts
+ 1316  sudo systemctl start jenkins
+ 1317  sudo systemctl status jenkins
+ 1318  docker ps
+ 1319  docker ps -a
+ 1320  docker rmi f3763f5b1de3
+ 1321  docker rm f3763f5b1de3
+ 1322  docker ps -a
+ 1323  sudo systemctl status jenkins
+ 1324  docker ps
+ 1325  docker ps -a
+ 1326  clear
+ 1327  cd flask-cicd
+ 1328  mkdir flask-cicd
+ 1329  cd flask-cicd
+ 1330  git init
+ 1331  nano app.py
+ 1332  nano requirements.txt
+ 1333  nano Dockerfile
+ 1334  git add .
+ 1335  git commit -m "Initial commit - Flask CI/CD project"
+ 1336  git remote add origin https://github.com/rhiya02/flask-cicd.git
+ 1337  git branch -M main
+ 1338  git push -u origin main
+ 1339  it branch -M main
+ 1340  git push -u origin main
+ 1341  git remote add origin https://github.com/rhiya02/flask-cicd.git
+ 1342  git branch -M main
+ 1343  git push -u origin main
+ 1344  git remote set-url origin https://rhiya02@github.com/rhiya02/flask-cicd.git
+ 1345  git push -u origin main
+ 1346  git credential-cache exit
+ 1347  git credential reject https://github.com
+ 1348  git config --global --unset credential.helper
+ 1349  git remote set-url origin https://rhiya02@github.com/rhiya02/flask-cicd.git
+ 1350  git remote -v
+ 1351  git push -u origin main
+ 1352  nano Jenkinsfile
+ 1353  git add .
+ 1354  git commit -m "Updated app logic"
+ 1355  git push
+ 1356  nano Jenkinsfile
+ 1357  git commit -m "Updated app logic"
+ 1358  git push
+ 1359  sudo docker ps
+ 1360  cd
+ 1361  sudo docker ps
+ 1362  sudo docker ps -a
+ 1363  sudo docker run -d -p 5000:5000 rhiya02/flask-cicd:latest
+ 1364  cd flask-cicd/
+ 1365  sudo docker run -d -p 5000:5000 rhiya02/flask-cicd:latest
+ 1366  sudo docker ps -a
+ 1367  sudo docker images
+ 1368  ls
+ 1369  sudo docker build -t flask-cicd:latest .
+ 1370  sudo usermod -aG docker jenkins
+ 1371  sudo systemctl restart docker
+ 1372  sudo systemctl restart jenkins
+ 1373  docker ps
+ 1374  cd
+ 1375  docker ps
+ 1376  cd flask-cicd/
+ 1377  nano Jenkinsfile
+ 1378  git add .
+ 1379  git commit -m "Updated app logic"
+ 1380  git push
+ 1381  nano Jenkinsfile
+ 1382  git add .
+ 1383  git commit -m "Updated app logic"
+ 1384  git push
+ 1385  sudo docker ps
+ 1386  sudo docker rm -f 0669cc105d4f
+ 1387  docker ps
+ 1388  docker images
+ 1389  nano Jenkinsfile
+ 1390  sudo systemctl restart docker sudo systemctl restart jenkins
+ 1391  sudo systemctl restart docker 
+ 1392  sudo systemctl restart jenkins
+ 1393  docker ps
+ 1394  docker ps -a
+ 1395  docker ps
+ 1396  docker ps -a
+ 1397  docker images
+ 1398  docker ps
+ 1399  docker start flask_app
+ 1400  docker stop flask_app
+ 1401  docker start flask_app
+ 1402  docker run -d --name sonarqube -p 9000:9000 sonarqube:lts
+ 1403  docker images
+ 1404  nano jenkinsfile
+ 1405  nano Jenkinsile
+ 1406  ls
+ 1407  nano  Jenkinsfile
+ 1408  git add .
+ 1409  history
+[?2004h]0;riya@DESKTOP-OO2RPRN: ~/flask-cicd[01;32mriya@DESKTOP-OO2RPRN[00m:[01;34m~/flask-cicd[00m$ [7mgit commit -m "Updated app logic"[27mgit commit -m "Updated app logic"
+[?2004l[main 5a5d4f2] Updated app logic
+ 2 files changed, 67 insertions(+)
+ create mode 100644 {
+[?2004h]0;riya@DESKTOP-OO2RPRN: ~/flask-cicd[01;32mriya@DESKTOP-OO2RPRN[00m:[01;34m~/flask-cicd[00m$ git push
+[?2004lPassword for 'https://rhiya02@github.com': 
+Enumerating objects: 6, done.
+Counting objects:  16% (1/6)Counting objects:  33% (2/6)Counting objects:  50% (3/6)Counting objects:  66% (4/6)Counting objects:  83% (5/6)Counting objects: 100% (6/6)Counting objects: 100% (6/6), done.
+Delta compression using up to 8 threads
+Compressing objects:  25% (1/4)Compressing objects:  50% (2/4)Compressing objects:  75% (3/4)Compressing objects: 100% (4/4)Compressing objects: 100% (4/4), done.
+Writing objects:  25% (1/4)Writing objects:  50% (2/4)Writing objects:  75% (3/4)Writing objects: 100% (4/4)Writing objects: 100% (4/4), 6.31 KiB | 807.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+To https://github.com/rhiya02/flask-cicd.git
+   7ec82d8..5a5d4f2  main -> main
+[?2004h]0;riya@DESKTOP-OO2RPRN: ~/flask-cicd[01;32mriya@DESKTOP-OO2RPRN[00m:[01;34m~/flask-cicd[00m$ git pushcommit -m "Updated app logic"history[Kgit add .nano  Jenkinsfile
+[?2004l[?2004h[?1049h[22;0;0t[1;33r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[31;60H(B[0;7m[ Reading... ](B[m[31;59H(B[0;7m[ Read 64 lines ](B[m[H(B[0;7m  GNU nano 6.2                                                 Jenkinsfile                                                           [1;132H(B[m[32d(B[0;7m^G(B[m Help[32;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[32;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[32;113H(B[0;7mM-A(B[m Set Mark[33d(B[0;7m^X(B[m Exit[33;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[33;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[33;113H(B[0;7mM-6(B[m Copy[2dpipeline {[3;5Hagent any[5;5Henvironment {[6;9HIMAGE_NAME = "rhiya02/flask-cicd"[7;9HIMAGE_TAG = "latest"[8;9HCONTAINER_NAME = "flask_app"[9;5H}[11dstages {[12;9Hstage('Checkout Code') {[13;13Hsteps {[14;17Hgit branch: 'main', url: '[94mhttps://github.com/rhiya02/flask-cicd.git'[15;13H[39m(B[m}[16;9H}[18d stage('SonarQube Analysis') {[19;5Hsteps {[20;9HwithSonarQubeEnv('MySonarQube') {[21;13Hsh "sonar-scanner -Dsonar.projectKey=flask-cicd -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=$(B[0;7m>[22;9H(B[m}[23;5H}[24d}[28;9Hstage('Build Docker Image') {[29;13Hsteps {[30;17Hscript {[2d[?12l[?25h[?25l[?12l[?25h[3d[?25l[?12l[?25h[4d[?25l[?12l[?25h[5d[?25l[?12l[?25h[6d[?25l[?12l[?25h[7d[?25l[?12l[?25h[8d[?25l[?12l[?25h[9d[?25l[?12l[?25h[10d[?25l[?12l[?25h[11d[?25l[?12l[?25h[12d[?25l[?12l[?25h[13d[?25l[?12l[?25h[14d[?25l[?12l[?25h[15d[?25l[?12l[?25h[16d[?25l[?12l[?25h[17d[?25l[?12l[?25h[18d[?25l[?12l[?25h[19d[?25l[?12l[?25h[20d[?25l[?12l[?25h[21d[?25l[31d[K[?12l[?25h[22d[?25l[?12l[?25h[23d[?25l[?12l[?25h[24d[?25l[?12l[?25h}[?25l[1;76H(B[0;7m*[132G(B[m[?12l[?25h[24d[K[?25l[24;31r[31;1H
+[1;33r[30;21Hecho "🏗️ Building Docker image..."[23;6H[?12l[?25h[?25l[?12l[?25h[K    [?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[23;31r[31;1H
+[1;33r[30;21Hsh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."[22;10H[?12l[?25h[?25l[?12l[?25h[K[22;9H[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[21;31r[31;1H
+[1;33r[21;1H(B[0;7m<(B[mogin=${SONAR_AUTH_TOKEN}"[30;17H}[21;27H[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[12G[1K sh "sonar-scanner -Dsonar.projectKey=flask-cicd -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h[K[21;13H[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[21;31r[31;1H
+[1;33r[30;13H}[20;42H[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[K[20;9H[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[20;31r[31;1H
+[1;33r[30;9H}[19;12H[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[K    [?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[19;31r[31;1H
+[1;33r[18;31H[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[K [?25l[2;24r[24;1H[2S[1;33r[16;2Hstage('SonarQube Analysis') {[17;5Hsteps {[18;9Hscript {[19;13Hdef scannerHome = tool 'SonarScanner'   // Use the tool name from Global Tool Configuration[20;9H    withSonarQubeEnv('MySonarQube') {[21;13H    sh "${scannerHome}/bin/sonar-scanner \[22;17H    -Dsonar.projectKey=flask-cicd \[23;21H-Dsonar.sources=. \[24;21H-Dsonar.host.url=http://localhost:9000 \[25;21H-Dsonar.login=${SONAR_AUTH_TOKEN}"[26;13H}[K[27;9H}[K[28;5H}[K[29d}[K[30d[?12l[?25h[?25l[?12l[?25h7[2;31r8[31d
+[1;33r[30;1H[?25l[?12l[?25h[A[?25l[?12l[?25h[A}[?25l[?12l[?25h[29d[?25l[?12l[?25h[30d[?25l[?12l[?25h[A[?25l[?12l[?25h[A}[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25h[A[?25l[?12l[?25h[17d[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25hs[?25l[?12l[?25hc[?25l[?12l[?25hr[?25l[?12l[?25hi[?25l[?12l[?25hp[?25l[?12l[?25ht[?25l[?12l[?25h [?25l[?12l[?25h{[?25l[?12l[?25h[18d[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25hd[?25l[?12l[?25he[?25l[?12l[?25hf[?25l[?12l[?25h [?25l[?12l[?25hs[?25l[?12l[?25hc[?25l[?12l[?25ha[?25l[?12l[?25hn[?25l[?12l[?25hn[?25l[?12l[?25he[?25l[?12l[?25hr[?25l[?12l[?25hH[?25l[?12l[?25ho[?25l[?12l[?25hm[?25l[?12l[?25he[?

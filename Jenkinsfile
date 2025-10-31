@@ -21,7 +21,8 @@ pipeline {
             withSonarQubeEnv('MySonarQube') {
                 sh "${scannerHome}/bin/sonar-scanner \
                     -Dsonar.projectKey=flask-cicd \
-                    -Dsonar.sources=. \
+                    -Dsonar.sources=src \
+                    -sonar.exclusions=**/tests/**,**/*.md,**/*.json,**/static/**,**/templates/**
                     -Dsonar.host.url=http://localhost:9000 \
                     -Dsonar.login=${SONAR_AUTH_TOKEN}"
             }

@@ -15,7 +15,6 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-    when { changeset "**/*.py" } // ✅ Run only when Python files change
     steps {
         script {
             def scannerHome = tool 'sonar-scanner'
@@ -32,6 +31,7 @@ pipeline {
         }
     }
 }
+
 
 
         stage('Build Docker Image') {

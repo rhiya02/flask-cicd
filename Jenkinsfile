@@ -15,22 +15,24 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-            steps {
-                script {
-                    def scannerHome = tool 'sonar-scanner'    // Use the tool name from Global Tool Configuration
-                    withSonarQubeEnv('MySonarQube') {
-                        // FIX: Combined the arguments into a single line or properly escaped the newlines
-                        // and ensured all properties start with -D
-                        sh "${scannerHome}/bin/sonar-scanner " +
-                           "-Dsonar.projectKey=flask-cicd " +
-                           "-Dsonar.sources=. " +
-                           "-Dsonar.exclusions=**/tests/**,**/static/**,**/templates/** " +
-                           "-Dsonar.host.url=http://localhost:9000 " +
-                           "-Dsonar.login=sqa_366c835fe69179d78e7875cb258b201a4146fb04"
-                    }
-                }
+    when { changeset "**/*.py" } // ✅ Run only when Python files change
+    steps {
+        script {
+            def scannerHome = tool 'sonar-scanner'
+            withSonarQubeEnv('MySonarQube') {
+                sh """
+                    ${scannerHome}/bin/sonar-scanner \
+                    -Dsonar.projectKey=flask-cicd \
+                    -Dsonar.sources=. \
+                    -Dsonar.exclusions=**/tests/**,**/static/**,**/templates/**,**/__pycache__/**,**/node_modules/** \
+                    -Dsonar.host.url=http://localhost:9000 \
+                    -Dsonar.login=sqa_366c835fe69179d78e7875cb258b201a4146fb04
+                """
             }
         }
+    }
+}
+
 
         stage('Build Docker Image') {
             steps {

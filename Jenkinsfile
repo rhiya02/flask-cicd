@@ -14,23 +14,24 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-    steps {
-        script {
-            def scannerHome = tool 'sonar-scanner'
-            withSonarQubeEnv('MySonarQube') {
-                sh """
-                    ${scannerHome}/bin/sonar-scanner \
-                    -Dsonar.projectKey=flask-cicd \
-                    -Dsonar.sources=. \
-                    -Dsonar.exclusions=**/tests/**,**/static/**,**/templates/**,**/__pycache__/**,**/node_modules/** \
-                    -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.login=sqa_366c835fe69179d78e7875cb258b201a4146fb04
-                """
+                stage('SonarQube Analysis') {
+            steps {
+                script {
+                    def scannerHome = tool 'sonar-scanner'   // Path set in Jenkins Global Tool Configuration
+                    withSonarQubeEnv('MySonarQube') {        // "MySonarQube" must match your SonarQube server name in Jenkins
+                        sh """
+                            ${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=flask-cicd \
+                            -Dsonar.sources=. \
+                            -Dsonar.exclusions=**/tests/**,**/static/**,**/templates/**,**/__pycache__/**,**/node_modules/** \
+                            -Dsonar.host.url=http://localhost:9000 \
+                            -Dsonar.login=sqa_366c835fe69179d78e7875cb258b201a4146fb04
+                        """
+                    }
+                }
             }
         }
-    }
-}
+    
 
 
 

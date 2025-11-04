@@ -25,7 +25,7 @@ pipeline {
                             -Dsonar.sources=. \
                             -Dsonar.exclusions=**/tests/**,**/static/**,**/templates/**,**/__pycache__/**,**/node_modules/** \
                             -Dsonar.host.url=http://localhost:9000 \
-                            -Dsonar.login=sqa_366c835fe69179d78e7875cb258b201a4146fb04
+                            -Dsonar.login=sqa_80bc4d45f22a55017ee31aa507c34f52e52f72ff
                         """
                     }
                 }

@@ -5,13 +5,24 @@ scrape_configs:
   - job_name: 'jenkins'
     metrics_path: /prometheus
     static_configs:
-      - targets: ['host.docker.internal:8080']
+      - targets: ['172.21.105.245:8080']
 
   - job_name: 'sonarqube'
     metrics_path: /api/monitoring/metrics
     static_configs:
-      - targets: ['host.docker.internal:9000']
+      - targets: ['172.21.105.245:9000']
 
   - job_name: 'flask-app'
     static_configs:
-      - targets: ['host.docker.internal:5000']
+      - targets: ['172.21.105.245:5000']
+
+  # Monitor Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Monitor Docker containers
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['172.21.105.245:9323']
+
